@@ -5,11 +5,24 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+			<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Star_wars2.svg/512px-Star_wars2.svg.png" width="120" height="70" class="d-inline-block align-text-top"/>
+    </a>
+  </div>
+</nav>
 			</Link>
-			<div className="ml-auto">
+			<div className="ml-auto me-5">
 				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+				<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Favorites
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">cardfavorito</a></li>
+  </ul>
+</div>
 				</Link>
 			</div>
 		</nav>
