@@ -1,26 +1,36 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
-import { Context } from "../store/appContext";
+import {Link, useParams} from "react-router-dom";
+import {Context} from "../store/appContext";
+import InCard from "../component/inCard";
 
 export const Single = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
-	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+   // const {store, actions} = useContext(Context);
+    const params = useParams();
+	const [chDetail,SetChDetail] = useState({});
 
-			<hr className="my-4" />
+    function getDetails(id) {
+        fetch("https://www.swapi.tech/api/people/"+ id)
+		.then(res => res.json())
+		.then(data => SetChDetail(data.result))
+		.catch(err => console.error(err))
+    }
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
-		</div>
-	);
+    useEffect(() => {
+            getDetails(params.id)
+    }, [])
+
+    return (<>
+		<InCard name={chDetail.properties?.name} hairColor={chDetail.properties?.hair_color} eyeColor={chDetail.properties?.eye_color} gender={chDetail.properties?.gender} description={chDetail.properties?.description}/>
+            <Link to="/">
+                <span className="btn btn-primary btn-lg" href="#" role="button">
+                    Back home
+                </span>
+            </Link>
+		</>
+    );
 };
 
 Single.propTypes = {
-	match: PropTypes.object
+    match: PropTypes.object
 };

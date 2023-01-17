@@ -1,0 +1,4 @@
+.scrollable {
+    overflow-x: scroll;
+    min-height: 400px;
+}
