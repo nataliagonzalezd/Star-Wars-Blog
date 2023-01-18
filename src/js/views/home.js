@@ -40,7 +40,7 @@ export const Home = () => {
 return(
 	<div className="mt-5">
         <div className="d-flex scrollable me-2 mb-5">{characters.map((item)=><Characters key={item.uid} name={item.name} id={item.uid}/>)}</div>
-		<div className="d-flex scrollable me-2 mb-5">{planets.map((item)=><Planets name={item.name} key={item.uid}/>)}</div>
-		<div className="d-flex scrollable me-2 mb-5">{vehicles.map((item)=><Vehicles name={item.name} key={item.uid}/>)}</div>
+		<div className="d-flex scrollable me-2 mb-5">{planets.map((item)=><Planets name={item.name} key={item.uid} id={item.uid}/>)}</div>
+		<div className="d-flex scrollable me-2 mb-5">{vehicles.map((item)=><Vehicles name={item.name} key={item.uid} id={item.uid}/>)}</div>
 	</div>
 );};

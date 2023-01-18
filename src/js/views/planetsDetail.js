@@ -2,26 +2,26 @@ import React, {useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
-import InCardCh from "../component/inCardCh";
+import InCardPl from "../component/inCardPl";
 
-export const Single = props => {
+export const PlanetsDetail = props => {
    // const {store, actions} = useContext(Context);
     const params = useParams();
-	const [chDetail,SetChDetail] = useState({});
+    const [plDetail,SetPlDetail] = useState({});
 
-    function getDetailsCh(id) {
-        fetch("https://www.swapi.tech/api/people/"+ id)
+    function getDetailsPl(id) {
+        fetch("https://www.swapi.tech/api/planets/"+ id)
 		.then(res => res.json())
-		.then(data => SetChDetail(data.result))
+		.then(data => SetPlDetail(data.result))
 		.catch(err => console.error(err))
     }
 
     useEffect(() => {
-            getDetailsCh(params.id)
+            getDetailsPl(params.id)
     }, [])
 
     return (<>
-		<InCardCh name={chDetail.properties?.name} hairColor={chDetail.properties?.hair_color} eyeColor={chDetail.properties?.eye_color} gender={chDetail.properties?.gender} description={chDetail.properties?.description} id={params.id}/>
+        <InCardPl name={plDetail.properties?.name}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home
@@ -31,6 +31,6 @@ export const Single = props => {
     );
 };
 
-Single.propTypes = {
+PlanetsDetail.propTypes = {
     match: PropTypes.object
 };
