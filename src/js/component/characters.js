@@ -18,7 +18,7 @@ export default function Characters(props) {
   </ul>
     <div className='mt-4'>
       <Link to={"/single/" + props.id} className="btn btn-dark me-5">Learn More!</Link>
-      <button type="button" className="btn btn-secondary" onClick={()=> actions.addFavorites()}><i className="fa fa-heart text-light" /></button>
+      <button type="button" className="btn btn-secondary" onClick={()=> actions.addFavorites(props.name)}><i className="fa fa-heart text-light" /></button>
     </div>
   </div>
 </div>

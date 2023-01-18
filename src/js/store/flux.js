@@ -47,8 +47,9 @@ const getState = ({getStore, getActions, setStore}) => {
 				.catch(err => console.error(err))
 			},
 
-			addFavorites: () =>{
+			addFavorites: (name) =>{
                  console.log("funciona")
+				 setStore({favorites: name})
 			},
 
             changeColor: (index, color) => { // get the store

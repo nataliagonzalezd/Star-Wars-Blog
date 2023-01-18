@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Context } from "../store/appContext";
 import {Link} from "react-router-dom";
 
 export const Navbar = () => {
+
+    const {store,actions} = useContext(Context);
+
     return (
         <nav className="navbar navbar-light bg-light mb-3">
             <Link to="/">
@@ -13,12 +17,12 @@ export const Navbar = () => {
             </Link>
             <div className="ml-auto me-5">
                     <div className="dropdown">
-                        <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">                        
                             Favorites
                         </button>
                         <ul className="dropdown-menu">
                             <li>
-                                <Link className="dropdown-item" to="#">cardfavorito</Link>
+                                <Link className="dropdown-item" to="#">{store.favorites}</Link>
                             </li>
                         </ul>
                     </div>
