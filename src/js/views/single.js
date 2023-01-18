@@ -5,23 +5,16 @@ import {Context} from "../store/appContext";
 import InCardCh from "../component/inCardCh";
 
 export const Single = props => {
-   // const {store, actions} = useContext(Context);
-    const params = useParams();
-	const [chDetail,SetChDetail] = useState({});
 
-    function getDetailsCh(id) {
-        fetch("https://www.swapi.tech/api/people/"+ id)
-		.then(res => res.json())
-		.then(data => SetChDetail(data.result))
-		.catch(err => console.error(err))
-    }
+    const params = useParams();
+    const {store, actions} = useContext(Context);
 
     useEffect(() => {
-            getDetailsCh(params.id)
+            actions.getDetailsCh(params.id)
     }, [])
 
     return (<>
-		<InCardCh name={chDetail.properties?.name} hairColor={chDetail.properties?.hair_color} eyeColor={chDetail.properties?.eye_color} gender={chDetail.properties?.gender} description={chDetail.properties?.description} id={params.id}/>
+		<InCardCh name={store.charactersDetail.properties?.name} hairColor={store.charactersDetail.properties?.hair_color} eyeColor={store.charactersDetail.properties?.eye_color} gender={store.charactersDetail.properties?.gender} description={store.charactersDetail.properties?.description} id={params.id}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home

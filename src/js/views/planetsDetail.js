@@ -5,23 +5,16 @@ import {Context} from "../store/appContext";
 import InCardPl from "../component/inCardPl";
 
 export const PlanetsDetail = props => {
-   // const {store, actions} = useContext(Context);
-    const params = useParams();
-    const [plDetail,SetPlDetail] = useState({});
 
-    function getDetailsPl(id) {
-        fetch("https://www.swapi.tech/api/planets/"+ id)
-		.then(res => res.json())
-		.then(data => SetPlDetail(data.result))
-		.catch(err => console.error(err))
-    }
+    const {store, actions} = useContext(Context);
+    const params = useParams();
 
     useEffect(() => {
-            getDetailsPl(params.id)
+           actions.getDetailsPl(params.id)
     }, [])
 
     return (<>
-        <InCardPl name={plDetail.properties?.name}/>
+        <InCardPl name={store.planetsDetail.properties?.name}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home

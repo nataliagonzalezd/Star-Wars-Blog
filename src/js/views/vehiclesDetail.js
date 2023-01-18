@@ -5,23 +5,15 @@ import {Context} from "../store/appContext";
 import InCardVe from "../component/inCardVe";
 
 export const VehiclesDetail = props => {
-   // const {store, actions} = useContext(Context);
+    const {store, actions} = useContext(Context);
     const params = useParams();
-    const [veDetail,SetVeDetail] = useState({});
-
-    function getDetailsVe(id){
-        fetch("https://www.swapi.tech/api/vehicles/"+id)
-        .then(res => res.json())
-        .then(data => console.log(data.results))
-        .catch(err => console.error(err))
-    }
 
     useEffect(() => {
-            getDetailsVe()
+            actions.getDetailsVe(params.id)
     }, [])
 
     return (<>
-        <InCardVe name={veDetail.properties?.name}/>
+        <InCardVe name={store.vehiclesDetail.properties?.name}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home
