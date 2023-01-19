@@ -7,14 +7,15 @@ export default function Characters(props) {
   const {store,actions} = useContext(Context);
 
   return (
-    <div className="card ms-5" style={{minWidth: "14rem";}}>
-  <img src={`https://starwars-visualguide.com/assets/img/characters/${props.id}.jpg`} className="card-img-top" alt="..."/>
-  <div className="card-body">
+    <>
+    <div className="card ms-5 align-items" style={{minWidth: "18rem"}}>
+  <img src={`https://starwars-visualguide.com/assets/img/characters/${props.id}.jpg`} className="card-img-top img-ch" alt="..."/>
+  <div className="card-body ts-card">
     <h5 className="card-title text-center">{props.name}</h5>
     <ul className="list-group list-group-flush">
-    <li className="list-group-item">Gender:</li>
-    <li className="list-group-item">Hair Color:</li>
-    <li className="list-group-item">Eye-Color:</li>
+    <li className="list-group-item ts-card">Gender:</li>
+    <li className="list-group-item ts-card">Hair Color:</li>
+    <li className="list-group-item ts-card">Eye-Color:</li>
   </ul>
     <div className='mt-4'>
       <Link to={"/single/" + props.id} className="btn btn-dark me-5">Learn More!</Link>
@@ -22,5 +23,6 @@ export default function Characters(props) {
     </div>
   </div>
 </div>
+</>
   )
 }

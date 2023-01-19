@@ -1,13 +1,14 @@
 import React, {useContext} from "react";
 import { Context } from "../store/appContext";
 import {Link} from "react-router-dom";
+import { GiRingedPlanet } from "react-icons/gi";
 
 export const Navbar = () => {
 
     const {store,actions} = useContext(Context);
 
     return (
-        <nav className="navbar navbar-light bg-light mb-3">
+        <nav className="navbar navbar-light bg-light mb-3 navbar-inner pt-0">
             <Link to="/">
                 <nav className="navbar bg-body-tertiary">
                     <div className="container-fluid">
@@ -17,8 +18,8 @@ export const Navbar = () => {
             </Link>
             <div className="ml-auto me-5">
                     <div className="dropdown">
-                        <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">                        
-                            Favorites
+                        <button className="btn btn-dark dropdown-toggle button-inner" type="button" data-bs-toggle="dropdown" aria-expanded="false">                        
+                        <GiRingedPlanet/>
                         </button>
                         <ul className="dropdown-menu">
                             <li>
