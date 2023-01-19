@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../store/appContext'
+import { IoPlanetOutline } from "react-icons/io5";
 
 export default function Characters(props) {
 
@@ -19,7 +20,7 @@ export default function Characters(props) {
   </ul>
     <div className='mt-4'>
       <Link to={"/single/" + props.id} className="btn btn-dark me-5">Learn More!</Link>
-      <button type="button" className="btn btn-secondary" onClick={()=> store.favorites.indexOf(props.name) !== -1 ? alert("yata") : actions.addFavorites(props.name)}><i className="fa fa-heart text-light" /></button>
+      <button type="button" className="btn btn-secondary" onClick={()=> store.favorites.indexOf(props.name) !== -1 ? alert("yata") : actions.addFavorites(props.name)}><IoPlanetOutline/></button>
     </div>
   </div>
 </div>

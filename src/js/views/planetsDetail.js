@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
 import {Context} from "../store/appContext";
 import InCardPl from "../component/inCardPl";
+import planetDescription from "../component/json/planets.json"
 
 export const PlanetsDetail = props => {
 
     const {store, actions} = useContext(Context);
     const params = useParams();
+    const pos = params.id - 1;
 
     useEffect(() => {
            actions.getDetailsPl(params.id)
@@ -20,6 +22,7 @@ export const PlanetsDetail = props => {
                     Back home
                 </span>
             </Link>
+            {planetDescription[pos].description}
 		</>
     );
 };
