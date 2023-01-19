@@ -22,7 +22,17 @@ export const Navbar = () => {
                         </button>
                         <ul className="dropdown-menu">
                             <li>
-                                <Link className="dropdown-item" to="#">{store.favorites}</Link>
+                                <Link className="dropdown-item" to="#">{
+                        
+                        <ul>{store.favorites.map((item, i) => (
+                            <li key={i}>
+                              {item}
+                              <button className="btn" onClick={()=> actions.deleteFavorites(item)}>
+                                <i className="fas fa-trash-alt align-items-end m-2 pt-1" />
+                              </button>
+                            </li>
+                          ))}</ul>                      
+                    }</Link>
                             </li>
                         </ul>
                     </div>

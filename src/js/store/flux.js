@@ -49,8 +49,17 @@ const getState = ({getStore, getActions, setStore}) => {
 
 			addFavorites: (name) =>{
                  console.log("funciona")
-				 setStore({favorites: name})
+				 const store = getStore();
+				 setStore({ favorites:[...store.favorites,name]});
 			},
+
+			deleteFavorites: (name) => {
+				const store = getStore();
+				const updatedFavorites = store.favorites.filter((elm, i) => elm !== name);
+				setStore({ favorites: updatedFavorites });
+			  },
+
+			  
 
             changeColor: (index, color) => { // get the store
                 const store = getStore();
