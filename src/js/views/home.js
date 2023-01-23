@@ -1,9 +1,9 @@
 import React, {useEffect,useState,useContext} from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import Characters from "../component/characters";
-import Planets from "../component/planets";
-import Vehicles from "../component/vehicles";
+import Characters from "../component/cards/characters";
+import Planets from "../component/cards/planets";
+import Vehicles from "../component/cards/vehicles";
 
 export const Home = () => {
 

@@ -11,7 +11,7 @@ export default function InCardPl(props) {
       <div className="card-body">
         <h5 className="card-title text-black ts-card">{props.name}</h5>
         <p className="card-text text-black ts-card">Population:</p>
-        <p className="card-text text-black ts-card">Terrain:</p>
+        <p className="card-text text-black ts-card">Terrain:{props.description}</p>
       </div>
     </div>
   </div>

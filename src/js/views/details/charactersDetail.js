@@ -1,11 +1,12 @@
 import React, {useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
-import {Context} from "../store/appContext";
-import InCardCh from "../component/inCardCh";
+import {Context} from "../../store/appContext";
+import InCardCh from "../../component/inCards/inCardCh";
 import characterDescription from "/workspace/Star-Wars-Blog/src/js/component/json/characters.json";
+import Characters from "../../component/cards/characters";
 
-export const Single = props => {
+export const CharactersDetails = props => {
 
     const params = useParams();
     const {store, actions} = useContext(Context);
@@ -17,8 +18,7 @@ export const Single = props => {
     let pos = params.id -1;
 
     return (<>
-		<InCardCh name={store.charactersDetail.properties?.name} hairColor={store.charactersDetail.properties?.hair_color} eyeColor={store.charactersDetail.properties?.eye_color} gender={store.charactersDetail.properties?.gender} description={store.charactersDetail.properties?.description} id={params.id}/>
-        {characterDescription[pos].description}
+		<InCardCh name={store.charactersDetail.properties?.name} hairColor={store.charactersDetail.properties?.hair_color} eyeColor={store.charactersDetail.properties?.eye_color} gender={store.charactersDetail.properties?.gender} description={characterDescription[pos].description} id={params.id}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home
@@ -28,6 +28,6 @@ export const Single = props => {
     );
 };
 
-Single.propTypes = {
+CharactersDetails.propTypes = {
     match: PropTypes.object
 };

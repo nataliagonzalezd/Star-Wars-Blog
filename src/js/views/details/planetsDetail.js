@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
-import {Context} from "../store/appContext";
-import InCardPl from "../component/inCardPl";
-import planetDescription from "../component/json/planets.json"
+import {Context} from "../../store/appContext";
+import InCardPl from "../../component/inCards/inCardPl";
+import planetDescription from "../../component/json/planets.json"
 
 export const PlanetsDetail = props => {
 
@@ -16,13 +16,12 @@ export const PlanetsDetail = props => {
     }, [])
 
     return (<>
-        <InCardPl name={store.planetsDetail.properties?.name}/>
+        <InCardPl name={store.planetsDetail.properties?.name} description={planetDescription[pos].description}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home
                 </span>
             </Link>
-            {planetDescription[pos].description}
 		</>
     );
 };

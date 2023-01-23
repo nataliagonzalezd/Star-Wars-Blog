@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import PropTypes from "prop-types";
 import {Link, useParams} from "react-router-dom";
-import {Context} from "../store/appContext";
-import InCardVe from "../component/inCardVe";
-import vehiclesDescription from "../component/json/vehicles.json"
+import {Context} from "../../store/appContext";
+import InCardVe from "../../component/inCards/inCardVe";
+import vehiclesDescription from "../../component/json/vehicles.json"
 
 export const VehiclesDetail = props => {
     const {store, actions} = useContext(Context);
@@ -43,13 +43,12 @@ export const VehiclesDetail = props => {
         const pos = match();
 
     return (<>
-        <InCardVe name={store.vehiclesDetail.properties?.name}/>
+        <InCardVe name={store.vehiclesDetail.properties?.name} description={vehiclesDescription[pos].description}/>
             <Link to="/">
                 <span className="btn btn-primary btn-lg" href="#" role="button">
                     Back home
                 </span>
             </Link>
-            {vehiclesDescription[pos].description}
 		</>
     );
 };

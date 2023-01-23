@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { Context } from '../store/appContext'
+import { Context } from '../../store/appContext'
 import { IoPlanetOutline } from "react-icons/io5";
 
 export default function Planets(props) {

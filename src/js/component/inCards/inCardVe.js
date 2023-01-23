@@ -11,7 +11,7 @@ export default function InCardVe(props) {
       <div className="card-body">
         <h5 className="card-title">{props.name}</h5>
         <p className="card-text">Model:</p>
-        <p className="card-text">Passengers:</p>
+        <p className="card-text">Passengers:{props.description}</p>
       </div>
     </div>
   </div>
