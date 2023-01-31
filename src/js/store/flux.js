@@ -85,7 +85,7 @@ const getState = ({
                 })
             },
             login: (userName, userPassword) => {
-                fetch('https://3000-nataliagonz-sistemadeau-q1f84irwjcj.ws-us84.gitpod.io/login', {
+                fetch('https://3000-nataliagonz-sistemadeau-glfs2j0phnn.ws-us84.gitpod.io/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -112,6 +112,33 @@ const getState = ({
                         }
                         console.log(data.access_token)
                         localStorage.setItem("token", data.access_token)
+                    })
+                    .catch((err) => console.log(err))
+            },
+            signup: (userName, lastName, firstName, userPassword) => {
+                fetch('https://3000-nataliagonz-sistemadeau-glfs2j0phnn.ws-us84.gitpod.io/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            "username": userName,
+                            "lastname": lastName,
+                            "password": userPassword,
+                            "firstname": firstName,
+                        })
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true
+                            })
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        console.log(data)
                     })
                     .catch((err) => console.log(err))
             },
