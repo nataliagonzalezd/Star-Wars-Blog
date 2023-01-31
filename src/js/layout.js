@@ -11,7 +11,7 @@ import { Footer } from "./component/footer";
 import { PlanetsDetail } from "./views/details/planetsDetail";
 import { VehiclesDetail } from "./views/details/vehiclesDetail";
 import { CharactersDetails } from "./views/details/charactersDetail";
-
+import { LoginView } from "./views/loginview";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -25,6 +25,7 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/login" element={<LoginView />} />
 						<Route path="/charactersDetail/:id" element={<CharactersDetails />} />
 						<Route path="/planetsDetail/:id" element={< PlanetsDetail/>} />
 						<Route path="/vehiclesDetail/:id" element={< VehiclesDetail/>} />

@@ -2,10 +2,17 @@ import React, {useContext} from "react";
 import { Context } from "../store/appContext";
 import {Link} from "react-router-dom";
 import { GiRingedPlanet } from "react-icons/gi";
+import { useNavigate } from "react-router-dom"; 
 
 export const Navbar = () => {
 
-    const {store,actions} = useContext(Context);
+    const{store, actions}=useContext(Context)
+	const navigate = useNavigate()
+
+	function handleLogout() {
+		actions.logout()
+		navigate("/login")
+	}
 
     return (
         <nav className="navbar navbar-light bg-light mb-3 navbar-inner pt-0">
@@ -27,15 +34,16 @@ export const Navbar = () => {
                         
                         <ul>{store.favorites.map((item, i) => (
                             <li key={i}>
-                              {item}
-                              <button className="btn" onClick={()=> actions.deleteFavorites(item)}>
+                            {item}
+                            <button className="btn" onClick={()=> actions.deleteFavorites(item)}>
                                 <i className="fas fa-trash-alt align-items-end m-2 pt-1" />
-                              </button>
+                            </button>
                             </li>
-                          ))}</ul>                      
+                        ))}</ul>                      
                     }</Link>
                             </li>
                         </ul>
+                        {store.auth === true? <button className="btn btn-dark" onClick={handleLogout}>Logout</button> : null}
                     </div>
             </div>
         </nav>
